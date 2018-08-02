@@ -49,6 +49,12 @@ footer {
   bottom: 0;
 }
 
+footer ul {
+  padding-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 footer li {
   list-style-type: none;
   display: inline;
