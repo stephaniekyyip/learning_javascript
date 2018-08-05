@@ -24,17 +24,67 @@
       { text: 'Nice Nice Nice!', id: 542328 }
     ];
 
+    console.log('people:');
+    console.table(people);
+
+    console.log('comments:');
+    console.table(comments);
+
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
+    // const isAdult = people.some(function(){
+    //   const currentYear = (new Date()).getFullYear();
+    //   if(currentYear - people.year >= 19){
+    //     return true;
+    //   }
+    // });
+
+    console.log('Is at least one person 19 or older?');
+    const isAdult = people.some(person => {
+      const currentYear = (new Date()).getFullYear();
+      return currentYear - person.year >= 19;
+    });
+
+    console.log({isAdult});
+
     // Array.prototype.every() // is everyone 19 or older?
+    console.log('Is everyone 19 or older?');
+    const allAdults = people.every(person => {
+      const currentYear = (new Date()).getFullYear();
+      return currentYear - person.year >= 19;
+    });
+
+    console.log({allAdults});
 
     // Array.prototype.find()
-    // Find is like filter, but instead returns just the one you are looking for
+    // Find is like filter, but instead returns just the first item it finds
     // find the comment with the ID of 823423
+    // const comment = comments.find(function(comment){
+    //   if(comment.id === 823423){
+    //     return true;
+    //   }
+    // });
+    console.log('Find comment w/ the ID of 823423: ');
+    const comment = comments.find(comment => comment.id === 823423);
+
+    console.log(comment);
 
     // Array.prototype.findIndex()
+    console.log('Find and delete comment w/ the ID of 823423: ');
     // Find the comment with this ID
+    const index = comments.findIndex(comment => comment.id === 823423);
+
     // delete the comment with the ID of 823423
+    comments.splice(index, 1); // deletes 1 entry starting at "index"
+
+    console.table(comments);
+
+    // alternatively, you can create a new array ommitting the comment w/ the id to delete
+    // const newComments = [
+    //   ...comments.splice(0, index),
+    //   ...comments.splice(index + 1)
+    // ];
+
 
   </script>
 </body>
