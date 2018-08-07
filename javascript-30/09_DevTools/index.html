@@ -5,7 +5,7 @@
   <title>Console Tricks!</title>
 </head>
 <body>
-
+  <h1>See Console...</h1>
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
@@ -16,30 +16,68 @@
       p.style.color = '#BADA55';
       p.style.fontSize = '50px';
     }
+    
+    // To open debugger + pause on the JavaScript on the line where the script is on:
+    // Inspect element -> right click -> break on -> attribute modifications
 
     // Regular
+    console.log('hello');
 
     // Interpolated
+    console.log('Hello I am a %s string!', ':poop:')
 
     // Styled
+    console.log('%c I am some great text', 'font-size:50px; background: red')
 
     // warning!
+    console.warn("OH NO");
 
     // Error :|
+    console.error('Error!');
 
     // Info
+    console.info('Crocodiles eat 3-4 people per year');
 
     // Testing
+    // If false, prints error msg
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), 'That is wrong!');
+
+    console.assert(1===1, 'That is wrong!');
 
     // clearing
+    console.log('Clear console with: console.clear()');
 
     // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+
+    // console.clear();
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
 
     // counting
-
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
+    
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/stephaniekyyip')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+    
+    console.table(dogs); // takes an array of objects and displays in a table
 
   </script>
 </body>
