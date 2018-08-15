@@ -46,6 +46,60 @@
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+function check(item){
+  if(item.startsWith('The ')){
+    item =  item.split('The ', 2).splice(1,1).join('');
+  }else if (item.startsWith('An ')){
+    item =  item.split('An ', 2).splice(1,1).join('');
+  }else if (item.startsWith('A ')){
+    item =  item.split('A ', 2).splice(1,1).join('');
+  }
+
+  console.log(item);
+
+  return item;
+}
+
+bands.sort((a, b) => {
+  let tempA = a, tempB = b;
+
+  tempA = check(tempA);
+  tempB = check(tempB);
+
+  if(tempA < tempB){
+    return -1;
+  }
+
+  if(tempA > tempB){
+    return 1;
+  }
+
+  return 0;
+
+});
+
+const list = document.getElementById('bands');
+list.innerHTML = bands.map(band=> {
+  return `
+    <li>${band}</li>
+  `;
+}).join('');
+
+/*
+***** Solution ******
+
+function strip(bandName){
+  return bandName.replace(/^(a |the |an )/i, '').trim();
+}
+
+const sortedBands = bands.sort((a,b) => return strip(a) > strip(b) ? 1: -1);
+
+document.querySelector('#bands').innerHTML = 
+  sortedBands
+    .map(band => `<li>${band}</li>`)
+    .join('')
+
+*/
 
 </script>
 
