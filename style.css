@@ -21,10 +21,6 @@ h3 {
 }
 
 /* Lists */
-ul li {
-  list-style-type: circle;
-}
-
 li ul {
   padding-left: 20px;
 }
